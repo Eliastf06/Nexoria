@@ -105,6 +105,8 @@ img {
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
     border: none;
     cursor: pointer;
+    line-height: 1; /* Asegura que la altura de línea no empuje el texto */
+    vertical-align: middle; /* Ayuda a centrar elementos inline-block */
 }
 
 .btn-primary {
@@ -140,6 +142,29 @@ img {
 
 .btn-tertiary:hover {
     background-color: var(--color-secondary);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+/* Botón de Login en el Nav */
+.btn-login {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    padding: 0.6rem 1.2rem; /* Reduce el padding para control más fino */
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-left: var(--spacing-sm); /* Espacio para separarlo de otros ítems */
+
+    /* Propiedades clave para el centrado */
+    display: inline-flex; /* Usa flexbox para el propio botón */
+    align-items: center; /* Centra el contenido (texto) verticalmente */
+    justify-content: center; /* Centra el contenido (texto) horizontalmente */
+    height: auto; /* Permite que la altura se ajuste al padding y font-size */
+}
+
+.btn-login:hover {
+    background-color: var(--color-primary);
     color: var(--color-dark);
     transform: translateY(-2px);
 }
@@ -424,7 +449,8 @@ img {
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group textarea {
+.form-group textarea,
+.form-group input[type="password"] { /* Añadido para el input de contraseña */
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #555;
@@ -438,7 +464,8 @@ img {
 
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group input[type="password"]:focus { /* Añadido para el input de contraseña */
     border-color: var(--color-primary);
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.3);
@@ -482,6 +509,95 @@ img {
     color: var(--color-primary);
     opacity: 1;
 }
+
+/* --- Modal de Login --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Permanece en la misma posición incluso al desplazarse */
+    z-index: 1001; /* Z-index alto para estar por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilitar el desplazamiento si es necesario */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo */
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.modal-content {
+    background-color: var(--color-dark-light);
+    margin: 10% auto; /* 10% desde la parte superior y centrado horizontalmente */
+    padding: var(--spacing-md);
+    border: 1px solid #444;
+    width: 90%; /* Ancho en pantallas pequeñas */
+    max-width: 450px; /* Ancho máximo en pantallas más grandes */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-dark);
+    position: relative;
+    animation: slideInTop 0.3s ease-out forwards;
+}
+
+.modal-content h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.close-button {
+    color: var(--color-text-light);
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-primary);
+}
+
+.login-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.login-form .btn-primary {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.forgot-password,
+.register-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+.forgot-password a,
+.register-link a {
+    color: var(--color-secondary);
+}
+
+.forgot-password a:hover,
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Animaciones para el modal */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInTop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 
 /* --- Responsividad Suave y Progresiva --- */
 
@@ -581,6 +697,19 @@ img {
         padding: 0.5rem 1rem;
     }
 
+    /* Ajuste para el botón de login en el menú móvil */
+    .nav-menu.active #openLoginModal {
+        display: block; /* Asegura que el botón de login sea visible dentro del menú desplegable */
+    }
+    .btn-login {
+        /* Para móvil, si el botón de login va dentro del menú hamburguesa */
+        width: auto; /* Ocupa el ancho necesario */
+        margin: 0 auto; /* Centra si está en una línea propia en el menú móvil */
+        padding: 0.8rem 1.5rem; /* Ajustar padding si el tamaño cambia mucho en móvil */
+        line-height: 1; /* Mantener alineación */
+    }
+
+
     .nav-toggle.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -670,5 +799,11 @@ img {
     .streamer-card img {
         width: 100px;
         height: 100px;
+    }
+
+    .modal-content {
+        margin: 5% auto; /* Un poco más arriba en pantallas muy pequeñas */
+        width: 95%;
+        padding: var(--spacing-sm);
     }
 }

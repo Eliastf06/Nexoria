@@ -25,7 +25,7 @@
                     <li><a href="#streamers">Streamers</a></li>
                     <li><a href="#about">Nosotros</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                </ul>
+                    <li><a href="#" id="openLoginModal" class="btn btn-login">Iniciar Sesión</a></li> </ul>
             </nav>
         </div>
     </header>
@@ -63,7 +63,7 @@
                 <h3 class="section-title">Nuestros Streamers</h3>
                 <div class="streamers-grid">
                     <div class="streamer-card">
-                        <img src="https://via.placeholder.com/150/ff4500/ffffff?text=Streamer1" alt="Foto de Streamer 1">
+                        <img src="https://via.placeholder.com/150/ff4500/ffffff?text=AliceDev" alt="Foto de AliceDev">
                         <h4>AliceDev</h4>
                         <p>Especialista en Python y Machine Learning. Streams de desarrollo de IA y análisis de datos.</p>
                         <div class="social-links">
@@ -74,7 +74,7 @@
                         <a href="#" class="btn btn-tertiary">Ver Perfil</a>
                     </div>
                     <div class="streamer-card">
-                        <img src="https://via.placeholder.com50/32CD32/ffffff?text=Streamer2" alt="Foto de Streamer 2">
+                        <img src="https://via.placeholder.com/150/32CD32/ffffff?text=ByteMaster" alt="Foto de ByteMaster">
                         <h4>ByteMaster</h4>
                         <p>Experto en C++ y desarrollo de juegos. Explora algoritmos complejos y motores gráficos.</p>
                         <div class="social-links">
@@ -85,7 +85,7 @@
                         <a href="#" class="btn btn-tertiary">Ver Perfil</a>
                     </div>
                     <div class="streamer-card">
-                        <img src="https://via.placeholder.com/150/ff4500/ffffff?text=Streamer3" alt="Foto de Streamer 3">
+                        <img src="https://via.placeholder.com/150/ff4500/ffffff?text=DevFlow" alt="Foto de DevFlow">
                         <h4>DevFlow</h4>
                         <p>Desarrollo Frontend con React y Vue. Streams de UI/UX, animaciones y buenas prácticas.</p>
                         <div class="social-links">
@@ -96,7 +96,7 @@
                         <a href="#" class="btn btn-tertiary">Ver Perfil</a>
                     </div>
                     <div class="streamer-card">
-                        <img src="https://via.placeholder.com/150/32CD32/ffffff?text=Streamer4" alt="Foto de Streamer 4">
+                        <img src="https://via.placeholder.com/150/32CD32/ffffff?text=LogicCraft" alt="Foto de LogicCraft">
                         <h4>LogicCraft</h4>
                         <p>Ingeniería de Software y Backend con Node.js y Go. Patrones de diseño y arquitectura de sistemas.</p>
                         <div class="social-links">
@@ -150,6 +150,26 @@
             </div>
         </div>
     </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <p class="forgot-password"><a href="#">¿Olvidaste tu contraseña?</a></p>
+                <p class="register-link">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+            </form>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
